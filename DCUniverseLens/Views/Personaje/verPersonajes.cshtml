@@ -1,0 +1,43 @@
+﻿@using DCUniverseLens.Entidades.EF
+
+
+@model List<Personaje>
+
+@{
+    ViewData["Title"] = "Lista de Personajes";
+}
+
+<div class="container mt-5" style="padding-bottom: 5rem;">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="text-warning">Personajes</h2>
+        <a asp-controller="Personaje" asp-action="Index" class="btn-volver">Volver</a>
+    </div>
+
+    <div class="row g-4">
+        @foreach (var p in Model)
+        {
+            <div class="col-md-6 col-lg-4">
+                <a href="@Url.Action("Detalles", "Personaje", new { id = p.Id })" class="text-decoration-none text-reset">
+                    <div class="card personaje-card h-100">
+                        <div class="card-header text-center">
+                            <h5 class="m-0 text-uppercase">@p.Apodo</h5>
+                        </div>
+                        <div class="card-body">
+                            <p><strong>Nombre:</strong> @p.Nombre</p>
+                            <p><strong>Poderes:</strong> @p.Poderes</p>
+                            <p><strong>Interpretado por:</strong> @p.IdActorNavigation?.Nombre</p>
+                            <p><strong>País de origen:</strong> @p.IdActorNavigation?.PaisOrigen</p>
+                            <p><strong>Edad:</strong> @p.IdActorNavigation?.Edad años</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        }
+    </div>
+</div>
+
+<script>
+    document.querySelectorAll(".row > div").forEach((el, index) => {
+        el.style.animationDelay = `${index * 0.08}s`;
+    });
+</script>

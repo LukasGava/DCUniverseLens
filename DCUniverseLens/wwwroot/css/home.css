@@ -1,0 +1,109 @@
+﻿body {
+    font-family: "Montserrat", sans-serif;
+    background: radial-gradient(circle at 20% 10%, rgba(0, 110, 255, 0.25), transparent 40%), radial-gradient(circle at 80% 60%, rgba(0, 150, 255, 0.15), transparent 50%), #0f1115;
+    background-attachment: fixed;
+    overflow-x: hidden;
+    color: #f4f4f4;
+}
+
+.home-hero {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Imagen de fondo */
+.home-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url(/images/justice-league-wallpaper.jpg);
+    background-size: cover;
+    background-position: center right;
+    opacity: 0.35;
+    z-index: 0;
+}
+
+/* Triángulo oscuro fusionado */
+.home-hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        120deg,
+        rgba(10, 15, 25, 0.95) 40%,
+        rgba(10, 15, 25, 0.85) 55%,
+        rgba(10, 15, 25, 0.6) 70%,
+        transparent 85%
+    );
+    clip-path: polygon(0 0, 55% 0, 35% 100%, 0% 100%);
+    z-index: 1;
+}
+
+.home-hero > .container {
+    position: relative;
+    z-index: 2;
+}
+
+/* 🔵 TÍTULO DC */
+h1.display-4 {
+    color: #4F8CFF;
+    font-weight: 600;
+    text-shadow: 0 0 4px rgba(79, 140, 255, 0.5), 0 0 12px rgba(79, 140, 255, 0.25);
+}
+
+/* 🟡 Texto secundario */
+.lead {
+    color: #FFE27A;
+    font-weight: 170px;
+}
+
+/* 🔵 Card */
+.card {
+    background-color: #1A1F2e;
+    border: 1px solid rgba(30, 77, 183, 0.3);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(30, 77, 183, 0.25), 0 4px 12px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-top: 20px;
+}
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 14px 38px rgba(30, 77, 183, 0.45), 0 8px 18px rgba(0, 0, 0, 0.6);
+    }
+
+/* 🔵 Header del card */
+.card-header {
+    background-color: #4F8CFf;
+    color: #fff;
+    font-weight: bold;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+/* 🟡 Botón principal */
+.btn-success {
+    background: linear-gradient( 135deg, #FFD84D 0%, #FFC107 50%, #F4A300 100% );
+    border: none;
+    color: black;
+    font-weight: bold;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+    .btn-success:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 15px rgba(255, 212, 59, 0.6);
+        color: #FFD43B;
+        background: white;
+    }
+
+/* 🔵 Footer */
+.footer-btn {
+    margin-top: 30px;
+}
+
+@media (max-width: 767px) {
+    .card {
+        margin-top: 40px;
+    }
+}

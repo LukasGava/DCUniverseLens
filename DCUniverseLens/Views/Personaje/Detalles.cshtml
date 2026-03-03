@@ -1,0 +1,64 @@
+﻿@model DCUniverseLens.Entidades.EF.Personaje;
+@{
+    ViewData["Title"] = "Detalles del Personaje";
+}
+
+<section class="home-hero">
+    <div class="container mt-5 mb-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+                <div class="card personaje-detalle-card h-100">
+
+                    <div class="card-header text-center">
+                        <h4 class="m-0 text-uppercase">@Model.Apodo</h4>
+                    </div>
+
+                    <div class="card-body">
+
+                        <div class="text-center mb-4">
+                            <img src="@Url.Content("~/images/personajes/" + Model.Id + ".png")"
+                                 class="detalle-img"
+                                 alt="@Model.Apodo" />
+                        </div>
+
+                        <p><strong>Nombre:</strong> @Model.Nombre</p>
+                        <p><strong>Poderes:</strong> @Model.Poderes</p>
+                        <p><strong>Interpretado por:</strong> @Model.IdActorNavigation?.Nombre</p>
+                        <p><strong>País de origen:</strong> @Model.IdActorNavigation?.PaisOrigen</p>
+                        <p><strong>Edad:</strong> @Model.IdActorNavigation?.Edad años</p>
+
+                        <div class="mt-3">
+                            <strong>Películas:</strong>
+                            @if (Model.IdPeliculas?.Any() == true)
+                            {
+                                <ul class="list-unstyled mt-2">
+                                    @foreach (var pelicula in Model.IdPeliculas)
+                                    {
+                                        <li>
+                                            <a class="link-warning fw-semibold"
+                                               asp-controller="Pelicula"
+                                               asp-action="Detalles"
+                                               asp-route-id="@pelicula.Id"
+                                               asp-route-idPersonaje="@Model.Id">
+                                                @pelicula.Nombre
+                                            </a>
+                                        </li>
+                                    }
+                                </ul>
+                            }
+                        </div>
+
+                        <div class="text-center mt-4">
+                            <a asp-action="Index"
+                               asp-controller="Personaje"
+                               class="btn-volver">
+                                Volver
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
